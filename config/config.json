@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "multilingual-content-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/multilingualContent/MultilingualContentWebPart.js",
+          "manifest": "./src/webparts/multilingualContent/MultilingualContentWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MultilingualContentWebPartStrings": "lib/webparts/multilingualContent/loc/{locale}.js"
+  }
+}

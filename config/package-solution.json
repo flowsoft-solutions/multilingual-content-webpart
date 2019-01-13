@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "multilingual-content-webpart-client-side-solution",
+    "id": "fa8eaf63-b0ba-499b-a3d8-cad2b162afa9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/multilingual-content-webpart.sppkg"
+  }
+}
