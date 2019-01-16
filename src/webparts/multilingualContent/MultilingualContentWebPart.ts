@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -9,23 +9,42 @@ import {
 
 import * as strings from 'MultilingualContentWebPartStrings';
 import MultilingualContent from './components/MultilingualContent';
+import Editor from './components/Editor';
 import { IMultilingualContentProps } from './components/IMultilingualContentProps';
 
 export interface IMultilingualContentWebPartProps {
   description: string;
+  html: string;
 }
 
 export default class MultilingualContentWebPart extends BaseClientSideWebPart<IMultilingualContentWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IMultilingualContentProps > = React.createElement(
-      MultilingualContent,
-      {
-        description: this.properties.description
-      }
-    );
 
-    ReactDom.render(element, this.domElement);
+    if (this.displayMode === DisplayMode.Read) {
+
+      this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
+      this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "0";
+      this.domElement.parentElement.parentElement.parentElement.style.marginTop = "0";
+      this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "0";
+      this.domElement.innerHTML = this.properties.html;
+    }
+    else {
+
+      const element: React.ReactElement<IMultilingualContentProps> = React.createElement(
+        Editor,
+        {
+          save: this.save
+        }
+      );
+
+      ReactDom.render(element, this.domElement);
+    }
+  }
+
+  public save: (html: string) => void = (html: string) => {
+    console.log(html)
+    this.properties.html = html;
   }
 
   protected onDispose(): void {

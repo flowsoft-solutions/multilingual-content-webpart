@@ -1,0 +1,11 @@
+.ContentEditorPart .ms-Dialog-main {
+    width: 65%;
+    max-width: 700px;
+  }
+  
+  .ContentEditorPart .ms-Dialog-main .ms-Dialog-content {
+    max-height:500px;
+    height:500px;
+    margin-bottom: 130px;
+    padding-bottom: 15px;
+  }
